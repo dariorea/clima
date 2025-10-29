@@ -10,7 +10,6 @@ export const getClima = async (req, res) => {
 
     // URL con unidades y idioma configurados
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${KEY}&units=metric&lang=es`;
-
     const result = await axios.get(url);
     const data = result.data;
 
@@ -22,6 +21,40 @@ export const getClima = async (req, res) => {
     res.status(500).json({
       mensaje: "Error al hacer la llamada a OpenWeatherMap",
       error: error.response?.data || error.message,
+    });
+  }
+};
+
+export const weatherLocal = async (req, res) => {
+	try {
+		const lat = req.query.lat;
+		const lon = req.query.lon;
+
+		const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}&units=metric&lang=es`
+		const result = await axios.get(`${url}`)
+		const data = result.data
+		res.json(data)
+	} catch (error) {
+		res.status(500).json({mensaje: "error al buscar las coordenadas", error: error})
+	}
+}
+
+export const getPronostico = async (req, res) => {
+  try {
+	const lat = req.query.lat;
+	const lon = req.query.lon;
+
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${KEY}&units=metric&lang=es`;
+
+    const result = await axios.get(`${url}`);
+    const data = result.data;
+    res.json(data);
+
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    res.status(500).json({
+      mensaje: "Error al obtener pronóstico del clima",
+      error: error.message,
     });
   }
 };
