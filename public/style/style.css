@@ -7,6 +7,8 @@ body {
     font-family: sans-serif; 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     background: #007bff; 
     color: white;
@@ -45,17 +47,11 @@ button {
     cursor: pointer; 
 }
 .card { 
-    width: 400px;
     color: white; 
     display: flex;
     flex-direction: column; 
-    align-items: center;
     justify-content: flex-start;
-    background: #007bff; 
-    border-radius: 12px; 
-    gap: 10px;
-    padding: 20px 0 20px 0;
-    border: solid 1px white;
+    gap: 5px;
 }
 .card p {
     font-size: 20px;
@@ -72,4 +68,39 @@ button {
 }
 .icontemp h3 {
     font-size: 50px;
+}
+
+
+.pronostico {
+    width: 500px;
+    margin-top: 20px;
+    display: flex;
+    overflow-y: auto;
+}
+.pronostico::-webkit-scrollbar {
+    background-color: #007bff;
+}
+.pronostico::-webkit-scrollbar-thumb {
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+.card-forest {
+    flex-shrink: 0;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.card-forest img {
+    width: 50px;
+}
+.card-forest h3 {
+    font-size: 25px;
+}
+.container-column {
+    width: 500px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
 }
